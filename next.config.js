@@ -3,7 +3,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["localhost","codex-ui.vercel.app/"],
+    domains: ["localhost","codex-ui.vercel.app"],
   },
 };
 
