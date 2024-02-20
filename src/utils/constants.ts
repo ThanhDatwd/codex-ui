@@ -1,6 +1,6 @@
 import { TabOptions } from "@/components/layouts/Tab";
 
-export const getStaticURL = () => "http://localhost:3000";
+export const getStaticURL = () => "https://codex-ui.vercel.app";
 export const OptionsLanguage = [
   {
     label: "English",
