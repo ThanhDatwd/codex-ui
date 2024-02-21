@@ -25,7 +25,7 @@ const CurrencySetting = () => {
               router.back();
             }}
           >
-            <ArrowRightIcon color="#fff" />
+            <ArrowRightIcon  />
           </button>
           <h2 className="text-xl text-white mb-0">Hiển thị tiền tệ</h2>
         </div>
