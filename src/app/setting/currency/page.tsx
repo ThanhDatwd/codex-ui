@@ -6,6 +6,7 @@ import { CheckIcon } from "@/assets/icons/CheckIcon";
 import { DEFAULT_CURRENCY, OPTIONS_CURRENCY } from "@/utils/constants";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import "../../../../i18n";
 
 const CurrencySetting = () => {
   const [currency, setCurrency] = useState<OptionProps>(DEFAULT_CURRENCY);
@@ -25,7 +26,7 @@ const CurrencySetting = () => {
               router.back();
             }}
           >
-            <ArrowRightIcon  />
+            <ArrowRightIcon color="#fff" />
           </button>
           <h2 className="text-xl text-white mb-0">Hiển thị tiền tệ</h2>
         </div>

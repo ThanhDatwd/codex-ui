@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export const HeaderLandingSection = () => {
   return (
-    <div className="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-3">
+    <div className="fixed z-20 top-0 left-0 w-full flex items-center justify-between px-6 py-3 bg-[#13111a]">
       <Logo />
-      <div className="flex items-center justify-center">
+      <div className="hidden lg:flex items-center justify-center">
         <Link href={"#"} className="py-4 px-5 font-semibold text-[#fff]">
             <span>Home</span>
         </Link>
