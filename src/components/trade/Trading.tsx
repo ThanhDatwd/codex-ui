@@ -177,7 +177,7 @@ const Trading = () => {
             <span className="text-[#fff] mt-2">≈0.00 AED</span>
           </div>
           <Button
-            sx={{ padding: 0 }}
+            sx={{ padding: 0, marginTop: "8px", textTransform: "none" }}
             className="p-0 w-full overflow-hidden mt-2 normal-case"
             variant="contained"
           >
@@ -186,7 +186,7 @@ const Trading = () => {
             </div>
           </Button>
           <Button
-            sx={{ padding: 0 }}
+            sx={{ padding: 0, marginTop: "8px", textTransform: "none" }}
             className="p-0 w-full overflow-hidden mt-2 normal-case"
             variant="contained"
           >
