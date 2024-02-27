@@ -25,6 +25,7 @@ const tabs = [
             <div className="flex items-center gap-3 px-4 py-2">
               {" "}
               <Button
+                sx={{ padding: 0 }}
                 className="p-0 w-full overflow-hidden normal-case"
                 variant="contained"
               >
@@ -33,6 +34,7 @@ const tabs = [
                 </div>
               </Button>
               <Button
+                sx={{ padding: 0 }}
                 className="p-0 w-full overflow-hidden normal-case"
                 variant="contained"
               >
