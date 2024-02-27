@@ -1,9 +1,20 @@
-"use client"
+"use client";
 import { BackIcon } from "@/assets/icons/BackIcon";
+import { Slider, styled } from "@mui/material";
 import i18next from "i18next";
 import { useRouter } from "next/navigation";
 import React from "react";
 
+const CssSlider = styled(Slider)({
+  "& .MuiSlider-mark": {
+    width: '12px', 
+    height: '12px', 
+    border:'3px solid #888888',
+    borderRadius:'40px',
+    background:'#000000',
+    transform: "translate(-50%, -50%)"
+  },
+});
 const AnnouncementPage = () => {
   const router = useRouter();
   return (
@@ -12,9 +23,11 @@ const AnnouncementPage = () => {
         <div className="cursor-pointer" onClick={() => router.back()}>
           <BackIcon />
         </div>
-        <span className="text-[#fff]">{i18next.t("announcementPage.title")}</span>
+        <span className="text-[#fff]">
+          {i18next.t("announcementPage.title")}
+        </span>
       </div>
     </div>
   );
 };
-export default AnnouncementPage
+export default AnnouncementPage;

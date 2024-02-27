@@ -1,10 +1,13 @@
-import { ClientSection } from "@/components/Landing/ClientSection";
-import { ContentSection } from "@/components/Landing/ContentSection";
-import { FeatureSection } from "@/components/Landing/FeatureSection";
-import { HeaderLandingSection } from "@/components/Landing/HeaderLandingSection";
-import { HeroSection } from "@/components/Landing/HeroSection";
-import { TestimonialSection } from "@/components/Landing/TestimonialSection";
-import { VideoSection } from "@/components/Landing/VideoSection";
+import { ClientSection } from "@/components/landing/ClientSection";
+import { ContentSection } from "@/components/landing/ContentSection";
+import { CtaSection } from "@/components/landing/CtaSection";
+import { FeatureSection } from "@/components/landing/FeatureSection";
+import { FooterSection } from "@/components/landing/FooterSection";
+import { HeaderLandingSection } from "@/components/landing/HeaderLandingSection";
+import { HeroSection } from "@/components/landing/HeroSection";
+import { QASection } from "@/components/landing/QASection";
+import { TestimonialSection } from "@/components/landing/TestimonialSection";
+import { VideoSection } from "@/components/landing/VideoSection";
 import { DefaultLayout } from "@/components/layouts/DefaultLayout";
 import React from "react";
 
@@ -22,6 +25,9 @@ const LandingPage = () => {
       <FeatureSection />
       <ContentSection />
       <TestimonialSection/>
+      <QASection/>
+      <CtaSection/>
+      <FooterSection/>
     </DefaultLayout>
   );
 };

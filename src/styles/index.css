@@ -678,6 +678,7 @@ input:-webkit-autofill {
 	}
 
 }
+
 /* Swiper */
 
 .swiper {
@@ -713,10 +714,37 @@ input:-webkit-autofill {
 	border-radius: 4px;
 }
 
-.swiper-pagination .swiper-pagination-bullet, .swiper-pagination .swiper-pagination-bullet-active {
+.swiper-pagination .swiper-pagination-bullet,
+.swiper-pagination .swiper-pagination-bullet-active {
 	background-color: #afafaf;
 }
 
-.feature-box-bg{
-	background: linear-gradient(118.28deg,#17181a -8.97%,#636675 141.84%);
+.feature-box-bg {
+	background: linear-gradient(118.28deg, #17181a -8.97%, #636675 141.84%);
+}
+
+/*  */
+.chat-input-custom {
+	background-color: transparent;
+	border-radius: 3px;
+	border: none;
+	outline: none;
+	width: 100%;
+	resize: none;
+	line-height: 1.2;
+	white-space: pre-line;
+	max-height: 240px;
+	/* Tối đa 6 dòng */
+	padding: 0;
+	overflow-y: auto;
+	background: blue;
+	/* Hiển thị thanh cuộn khi cần thiết */
+
+}
+.chat-input-custom ::-webkit-scrollbar {
+	width: 0;
+}
+
+.chat-input-custom ::-webkit-scrollbar-thumb {
+	background-color: #ccc;
 }
