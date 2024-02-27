@@ -17,35 +17,7 @@ const tabs = [
   {
     name: `${i18next.t("tradePage.chart.title")}`,
     content: (
-      <DefaultLayout
-        pageTitle="Dashboard"
-        containerStyle="bg-[#13111a] dark:bg-[#13111a]  "
-        childrenMenuBar={
-          <>
-            <div className="flex items-center gap-3 px-4 py-2">
-              {" "}
-              <Button
-                sx={{ padding: 0 }}
-                className="p-0 w-full overflow-hidden normal-case"
-                variant="contained"
-              >
-                <div className="w-full bg-[#55af72] py-[6px] px-4 ">
-                  {i18next.t("tradePage.long")}
-                </div>
-              </Button>
-              <Button
-                sx={{ padding: 0 }}
-                className="p-0 w-full overflow-hidden normal-case"
-                variant="contained"
-              >
-                <div className="w-full bg-[#dd5350] py-[6px] px-4 ">
-                  {i18next.t("tradePage.short")}
-                </div>
-              </Button>
-            </div>
-          </>
-        }
-      >
+      <>
         <div className=" flex flex-col ">
           <div className="py-3 px-2">
             <div>
@@ -89,7 +61,28 @@ const tabs = [
           </div>
         </div>
         <OrderSection />
-      </DefaultLayout>
+        <div className="sticky bottom-0 left-0 flex items-center gap-3 px-4 py-2 z-50">
+          {" "}
+          <Button
+            sx={{ padding: 0 }}
+            className="p-0 w-full overflow-hidden normal-case"
+            variant="contained"
+          >
+            <div className="w-full bg-[#55af72] py-[6px] px-4 ">
+              {i18next.t("tradePage.long")}
+            </div>
+          </Button>
+          <Button
+            sx={{ padding: 0 }}
+            className="p-0 w-full overflow-hidden normal-case"
+            variant="contained"
+          >
+            <div className="w-full bg-[#dd5350] py-[6px] px-4 ">
+              {i18next.t("tradePage.short")}
+            </div>
+          </Button>
+        </div>
+      </>
     ),
   },
   {
@@ -107,7 +100,6 @@ const TradePage = () => {
   return (
     <DefaultLayout
       containerStyle="bg-[#13111a] dark:bg-[#13111a]  "
-      isShowMenubar={false}
     >
       <Tabs
         tabs={tabs}
