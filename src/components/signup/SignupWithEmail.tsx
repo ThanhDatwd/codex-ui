@@ -5,31 +5,8 @@ import i18next from "i18next";
 import { useRouter } from "next/navigation";
 import React from "react";
 import * as Yup from "yup";
-const CssTextField = styled(TextField)({
-  "& label.Mui-focused": {
-    color: "#3D5AFE",
-  },
-  "& label": {
-    color: "#fff",
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "#B2BAC2",
-  },
-  "& .MuiInputBase-input": {
-    color: "#fff",
-  },
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "transparent",
-    },
-    "&:hover fieldset": {
-      borderColor: "#fff",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#3D5AFE",
-    },
-  },
-});
+import { InputCustom } from "../InputCustom";
+
 const SignupWithEmail = () => {
   const router = useRouter();
   const validationSchema = Yup.object({
@@ -38,15 +15,19 @@ const SignupWithEmail = () => {
       .matches(/@[^.]*\./, i18next.t("authenticationPage.emailIsInvalid"))
       .required(i18next.t("authenticationPage.emailIsInvalid"))
       .max(255, "Email too long"),
-    userName: Yup.string().required(i18next.t("authenticationPage.userNameIsInvalid")),
-    password: Yup.string().required(i18next.t("authenticationPage.passwordIsInvalid")),
+    userName: Yup.string().required(
+      i18next.t("authenticationPage.userNameIsInvalid"),
+    ),
+    password: Yup.string().required(
+      i18next.t("authenticationPage.passwordIsInvalid"),
+    ),
   });
   const formik = useFormik({
     initialValues: {
       email: "",
       userName: "",
       password: "",
-      inviteCode:""
+      inviteCode: "",
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {},
@@ -59,7 +40,7 @@ const SignupWithEmail = () => {
       autoComplete="off"
     >
       <div className="bg-[#1D1C22]">
-        <CssTextField
+        <InputCustom
           error={
             formik.touched.userName && formik.errors.userName ? true : false
           }
@@ -78,7 +59,7 @@ const SignupWithEmail = () => {
         ) : null}
       </div>
       <div className="bg-[#1D1C22]">
-        <CssTextField
+        <InputCustom
           error={formik.touched.email && formik.errors.email ? true : false}
           className=" bg-transparent w-full text-[16px]"
           label={i18next.t("authenticationPage.email")}
@@ -95,7 +76,7 @@ const SignupWithEmail = () => {
         ) : null}
       </div>
       <div className="bg-[#1D1C22]">
-        <CssTextField
+        <InputCustom
           error={
             formik.touched.password && formik.errors.password ? true : false
           }
@@ -115,7 +96,7 @@ const SignupWithEmail = () => {
         ) : null}
       </div>
       <div className="bg-[#1D1C22]">
-        <CssTextField
+        <InputCustom
           className=" bg-transparent w-full text-[16px]"
           label={i18next.t("authenticationPage.invitationCode")}
           name="inviteCode"

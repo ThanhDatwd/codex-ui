@@ -28,7 +28,7 @@ export const AuthenticatedProfile = () => {
         <ProfileItem
           icon={<PhoneIcon />}
           filedName={i18next.t("profilePage.phoneNumber")}
-          value={"Not set"}
+          value={i18next.t("profilePage.notSet")}
           link=""
         />
         <ProfileItem
@@ -49,12 +49,12 @@ export const AuthenticatedProfile = () => {
           icon={<BankIcon />}
           filedName={i18next.t("profilePage.withdrawAccount")}
           rightIcon={<ArrowRightIcon />}
-          link="/m/setting/withdraw-account"
+          link="/m/setting/payment"
         />
         <ProfileItem
           icon={<VisaIcon />}
           filedName={i18next.t("profilePage.authentication")}
-          value={"Not certified"}
+          value={i18next.t("profilePage.notCertified")}
           rightIcon={<ArrowRightIcon />}
           link="/m/setting/authentication"
         />

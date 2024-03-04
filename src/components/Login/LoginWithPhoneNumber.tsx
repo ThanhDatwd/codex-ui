@@ -8,31 +8,8 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import SelectCountries from "../SelectCountries";
 import i18next from "i18next";
-const CssTextField = styled(TextField)({
-  "& label.Mui-focused": {
-    color: "#3D5AFE",
-  },
-  "& label": {
-    color: "#fff",
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "#B2BAC2",
-  },
-  "& .MuiInputBase-input": {
-    color: "#fff",
-  },
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "transparent",
-    },
-    "&:hover fieldset": {
-      borderColor: "#fff",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#3D5AFE",
-    },
-  },
-});
+import { InputCustom } from "../InputCustom";
+
 interface country {
   code: string;
   label: string;
@@ -44,9 +21,12 @@ const LoginWithPhoneNumber = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentCountry, setCurrentCountry] = useState<any>();
   const validationSchema = Yup.object({
-    phoneNumber: Yup.string()
-      .required(i18next.t("authenticationPage.phoneNumberIsInvalid")),
-    password: Yup.string().required(i18next.t("authenticationPage.passwordIsInvalid")),
+    phoneNumber: Yup.string().required(
+      i18next.t("authenticationPage.phoneNumberIsInvalid"),
+    ),
+    password: Yup.string().required(
+      i18next.t("authenticationPage.passwordIsInvalid"),
+    ),
   });
   const formik = useFormik({
     initialValues: {
@@ -61,7 +41,8 @@ const LoginWithPhoneNumber = () => {
     const locationData = await geolocationService.getLocation();
     if (locationData) {
       const country = COUNTRIES.find(
-        (item) => item.code.toLowerCase() === locationData.country.toLowerCase()
+        (item) =>
+          item.code.toLowerCase() === locationData.country.toLowerCase(),
       );
       setCurrentCountry(country);
     }
@@ -86,8 +67,17 @@ const LoginWithPhoneNumber = () => {
             +{currentCountry && currentCountry.phone}
           </Button>
           <div className="bg-[#1D1C22] w-full flex flex-col">
-            <CssTextField
+<<<<<<< HEAD
+            <InputCustom
               error={formik.touched.phoneNumber && formik.errors.phoneNumber ? true : false}
+=======
+            <CssTextField
+              error={
+                formik.touched.phoneNumber && formik.errors.phoneNumber
+                  ? true
+                  : false
+              }
+>>>>>>> develop
               className=" bg-transparent w-full text-[16px]"
               label={i18next.t("authenticationPage.phoneNumber")}
               name="phoneNumber"
@@ -96,15 +86,15 @@ const LoginWithPhoneNumber = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-          {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
-            <div className="text-[#FF4444] text-[14px] px-4 py-1">
-              {formik.errors.phoneNumber}
-            </div>
-          ) : null}
+            {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+              <div className="text-[#FF4444] text-[14px] px-4 py-1">
+                {formik.errors.phoneNumber}
+              </div>
+            ) : null}
           </div>
         </div>
         <div className="bg-[#1D1C22]">
-          <CssTextField
+          <InputCustom
             error={
               formik.touched.password && formik.errors.password ? true : false
             }
