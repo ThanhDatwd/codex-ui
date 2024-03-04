@@ -2,7 +2,7 @@ import React from "react";
 import { TabOptions } from "@/components/layouts/Tab";
 import i18next from "i18next";
 
-export const getStaticURL = () => "http://localhost:3000";
+export const getStaticURL = () => "https://codex-ui.vercel.app";
 export const OptionsLanguage = [
   {
     label: "English",
