@@ -3,58 +3,78 @@ import { Button, TextField, styled } from "@mui/material";
 import { useFormik } from "formik";
 import i18next from "i18next";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { InputCustom } from "../InputCustom";
+import { authService } from "@/services/AuthServices";
 
 const SignupWithEmail = () => {
   const router = useRouter();
+  const [messageFail, setMassageFail] = useState<string>("");
+
   const validationSchema = Yup.object({
     email: Yup.string()
       .email(i18next.t("authenticationPage.emailIsInvalid"))
       .matches(/@[^.]*\./, i18next.t("authenticationPage.emailIsInvalid"))
       .required(i18next.t("authenticationPage.emailIsInvalid"))
       .max(255, "Email too long"),
-    userName: Yup.string().required(
-      i18next.t("authenticationPage.userNameIsInvalid"),
+    username: Yup.string().required(
+      i18next.t("authenticationPage.userNameIsInvalid")
     ),
-    password: Yup.string().required(
-      i18next.t("authenticationPage.passwordIsInvalid"),
-    ),
+    password: Yup.string()
+      .min(8, i18next.t("authenticationPage.passwordMinLength"))
+      .matches(/[a-z]/, i18next.t("authenticationPage.passwordLowercase"))
+      .matches(/[A-Z]/, i18next.t("authenticationPage.passwordUppercase"))
+      .matches(/[0-9]/, i18next.t("authenticationPage.passwordNumber"))
+      .matches(
+        /[^a-zA-Z0-9.]/,
+        i18next.t("authenticationPage.passwordSpecialChar")
+      )
+      .required(i18next.t("authenticationPage.passwordIsInvalid")),
   });
   const formik = useFormik({
     initialValues: {
       email: "",
-      userName: "",
+      username: "",
       password: "",
       inviteCode: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => {
+      try {
+        const response = await authService.signupEmail(values);
+        console.log(response);
+        if (response.success) {
+          router.push("/m/login");
+        } else {
+          setMassageFail(response.message);
+        }
+      } catch (error) {}
+    },
   });
 
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="flex flex-col gap-2"
+      className="flex flex-col gap-2 mt-6"
       autoComplete="off"
     >
       <div className="bg-[#1D1C22]">
         <InputCustom
           error={
-            formik.touched.userName && formik.errors.userName ? true : false
+            formik.touched.username && formik.errors.username ? true : false
           }
           className=" bg-transparent w-full text-[16px]"
           label={i18next.t("authenticationPage.username")}
-          name="userName"
+          name="username"
           autoComplete="new-email"
-          value={formik.values.userName}
+          value={formik.values.username}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
-        {formik.touched.userName && formik.errors.userName ? (
+        {formik.touched.username && formik.errors.username ? (
           <div className="text-[#FF4444] text-[14px] px-4 py-1">
-            {formik.errors.userName}
+            {formik.errors.username}
           </div>
         ) : null}
       </div>
@@ -107,9 +127,14 @@ const SignupWithEmail = () => {
           placeholder="(Optional)"
         />
       </div>
+      {messageFail !== "" && (
+        <div className="text-[red] text-[14px] mt-4 p-2 px-3 rounded bg-red-300">
+          {messageFail}
+        </div>
+      )}
       <Button
         type="submit"
-        style={{ background: "#3D5AFE" }}
+        style={{ background: "#3D5AFE", color: "#fff" }}
         className="mt-6 flex items-center justify-center text-[16px] text-[#fff] font-bold rounded bg-[#3D5AFE] hover:bg-[#2a3eb1]"
       >
         {i18next.t("authenticationPage.register")}

@@ -1,6 +1,6 @@
 "use client";
 import { geolocationService } from "@/services/GeolocationService";
-import { COUNTRIES } from "@/utils/constants";
+import { COUNTRIES, LOGIN_MODE } from "@/utils/constants";
 import { Button, TextField, styled } from "@mui/material";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,8 @@ import * as Yup from "yup";
 import SelectCountries from "../SelectCountries";
 import i18next from "i18next";
 import { InputCustom } from "../InputCustom";
+import { authService } from "@/services/AuthServices";
+import { useAuth } from "@/hooks/useAuth";
 
 interface country {
   code: string;
@@ -17,32 +19,45 @@ interface country {
   suggested?: undefined | boolean;
 }
 const LoginWithPhoneNumber = () => {
+  const { setCurrentUser, login } = useAuth();
+  const [messageLoginFail, setMassageLoginFail] = useState("");
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [currentCountry, setCurrentCountry] = useState<any>();
   const validationSchema = Yup.object({
     phoneNumber: Yup.string().required(
-      i18next.t("authenticationPage.phoneNumberIsInvalid"),
+      i18next.t("authenticationPage.phoneNumberIsInvalid")
     ),
     password: Yup.string().required(
-      i18next.t("authenticationPage.passwordIsInvalid"),
+      i18next.t("authenticationPage.passwordIsInvalid")
     ),
   });
   const formik = useFormik({
     initialValues: {
       phoneNumber: "",
       password: "",
+      mode: LOGIN_MODE.PHONE_NUMBER,
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {},
+    onSubmit: async (values) => {
+      try {
+        const user = await login({
+          ...values,
+          phoneNumber: currentCountry.phone + values.phoneNumber,
+        });
+        if (user) {
+          router.push("/m");
+        }
+      } catch (error) {
+        setMassageLoginFail("Incorrect email or password");
+      }
+    },
   });
   const handleCheckUserLocation = async () => {
-    console.log("Cin chào");
     const locationData = await geolocationService.getLocation();
     if (locationData) {
       const country = COUNTRIES.find(
-        (item) =>
-          item.code.toLowerCase() === locationData.country.toLowerCase(),
+        (item) => item.code.toLowerCase() === locationData.country.toLowerCase()
       );
       setCurrentCountry(country);
     }
@@ -54,7 +69,7 @@ const LoginWithPhoneNumber = () => {
     <>
       <form
         onSubmit={formik.handleSubmit}
-        className="flex flex-col gap-2"
+        className="flex flex-col gap-2 mt-6"
         autoComplete="off"
       >
         <div className="flex items-stretch items-center gap-2">
@@ -64,11 +79,15 @@ const LoginWithPhoneNumber = () => {
             className="text-[#fff] min-h-[56px] h-full flex items-end justify-center p-3"
             onClick={() => setIsOpen(true)}
           >
-            +{currentCountry && currentCountry.phone}
+            {currentCountry && currentCountry.phone}
           </Button>
           <div className="bg-[#1D1C22] w-full flex flex-col">
             <InputCustom
-              error={formik.touched.phoneNumber && formik.errors.phoneNumber ? true : false}
+              error={
+                formik.touched.phoneNumber && formik.errors.phoneNumber
+                  ? true
+                  : false
+              }
               className=" bg-transparent w-full text-[16px]"
               label={i18next.t("authenticationPage.phoneNumber")}
               name="phoneNumber"
@@ -104,9 +123,14 @@ const LoginWithPhoneNumber = () => {
             </div>
           ) : null}
         </div>
+        {messageLoginFail !== "" && (
+          <div className="text-[red] text-[14px] mt-4 p-2 px-3 rounded bg-red-300">
+            {messageLoginFail}
+          </div>
+        )}
         <Button
           type="submit"
-          style={{ background: "#3D5AFE" }}
+          style={{ background: "#3D5AFE", color: "#fff" }}
           className="mt-6 flex items-center justify-center text-[16px] text-[#fff] font-bold rounded bg-[#3D5AFE] hover:bg-[#2a3eb1]"
         >
           {i18next.t("authenticationPage.login")}

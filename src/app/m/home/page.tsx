@@ -6,7 +6,7 @@ import Header from "@/components/layouts/Header";
 import { getStaticURL } from "@/utils/constants";
 import { NextIcon } from "@/assets/icons/NextIcon";
 import { DepositIcon } from "@/assets/icons/DepositIcon";
-import { TelesaleIcon } from "@/assets/icons/TelesaleIcon";;
+import { TelesaleIcon } from "@/assets/icons/TelesaleIcon";
 import { LoudspeakerIcon } from "@/assets/icons/LoudspeakerIcon";
 import { MenuIcon } from "@/assets/icons/MenuIcon";
 import Link from "next/link";
@@ -35,10 +35,7 @@ export default function Home() {
   }, []);
 
   return (
-    <DefaultLayout
-      pageTitle="Dashboard"
-      containerStyle="bg-[#000000] dark:bg-[#000000]"
-    >
+    <DefaultLayout containerStyle="bg-[#000000] dark:bg-[#000000]">
       <Header />
       <div>
         <div className="w-full">

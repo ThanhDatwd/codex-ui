@@ -1,31 +1,28 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
+import { WebSocketCtx } from "@/providers/WebSocketProvider";
 import "../../../i18n";
 import { MenuBar } from "./MenuBar";
 
+import { useRouter } from "next/navigation";
+
 export const DefaultLayout = ({
   children,
-  pageTitle,
   containerStyle,
-  headerStyle,
   isShowMenubar = true,
   childrenMenuBar,
 }: {
   children: React.ReactNode;
-  pageTitle?: string;
   containerStyle: string;
-  headerStyle?: string;
   isShowMenubar?: boolean;
   childrenMenuBar?: React.ReactNode;
 }) => {
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === "k") {
-      document.getElementById("input-search")?.focus();
-    }
-  };
+  
+  const router = useRouter()
   const menuBarRef = useRef<any>(null);
+  const { webSocket, register } = useContext(WebSocketCtx);
   const [heightMenuBar, setHeightMenuBar] = useState(0);
 
   useEffect(() => {
@@ -34,11 +31,12 @@ export const DefaultLayout = ({
       setHeightMenuBar(height);
     }
   }, []);
+  
   return (
     <main
       className={`ease-soft-in-out relative h-screen transition-all duration-200 ${containerStyle}`}
     >
-      <div className="w-full h-full" onKeyDown={handleKeyPress} tabIndex={50}>
+      <div className="w-full h-full" >
         <div
           className="relative w-full mx-auto overflow-auto "
           style={{ height: `calc(100% - ${heightMenuBar}px)` }}

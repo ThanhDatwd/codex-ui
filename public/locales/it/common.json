@@ -81,9 +81,29 @@
     "title": "Annuncio"
   },
   "withdrawAccount": {
-    "title": "Account di prelievo",
-    "noWithdrawalAccount": "Nessun account di prelievo impostato",
-    "withdrawAccountBtn": "Aggiungi account di prelievo"
+    "title": "Conto di prelievo",
+    "noWithdrawalAccount": "Conto di prelievo non impostato",
+    "withdrawAccountBtn": "Aggiungi un conto di prelievo",
+    "type": "tipo",
+    "fiatCurrency": "corso legale",
+    "cryptocurrency": "criptovaluta",
+    "country": "nazione",
+    "clickToSelectCountry": "Fare clic per selezionare il paese",
+    "bank": "istituto bancario",
+    "placeholderBank": "Compila l'istituto bancario del conto",
+    "bankAccount": "Conto bancario",
+    "realName": "nome effettivo",
+    "placeholderRealName": "Il vero nome del titolare del conto",
+    "contactAddress": "indirizzo di contatto",
+    "placeholderContactAddress": "Indirizzo di contatto dettagliato",
+    "contactPhone": "numero di contatto",
+    "idNumber": "carta d'identità",
+    "remark": "Nota(opzionale)",
+    "placeholderRemark": "Aggiungi note",
+    "confirm": "Confermare",
+    "pleaseSelectCryptocurrencies": "Seleziona un paese o una regione",
+    "searchCountryOrRegion": "Cerca paese o regione",
+    "required": "necessario"
   },
   "authentication": {
     "title": "Autenticazione",
@@ -150,8 +170,14 @@
     "loginPassword": "password per il login",
     "invitationCode": "Codice invito",
     "userNameIsInvalid": "è richiesto il nome utente",
-    "passwordIsInvalid": "6-20 caratteri",
+    "passwordIsInvalid": "8-20 caratteri",
     "phoneNumberIsInvalid": "Il numero di cellulare non è corretto",
+    "phoneNumberIsNotTrue": "Il numero di cellulare non è corretto",
+    "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+    "passwordLowercase": "La contraseña debe contener al menos una letra minúscula",
+    "passwordUppercase": "La contraseña debe contener al menos una letra mayúscula",
+    "passwordNumber": "La contraseña debe contener al menos un número",
+    "passwordSpecialChar": "La contraseña debe contener al menos un carácter especial",
     "emailIsInvalid": "Il formato dell'e-mail non è corretto"
   },
   "deposit": {
@@ -186,7 +212,7 @@
     "oldPassword": "vecchia password",
     "newPassword": "nuova password",
     "oldPasswordInvalidError": "Inserisci la vecchia password",
-    "newPasswordInvalidError": "6-20 caratteri",
+    "newPasswordInvalidError": "8-20 caratteri",
     "confirmBtn": "Confermare"
   },
   "securityCode": {

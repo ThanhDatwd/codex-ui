@@ -6,6 +6,8 @@ import i18next from "i18next";
 import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/index.css";
+import { WebSocketProvider } from "@/providers/WebSocketProvider";
+import { AuthProvider } from "@/components/authentication/AuthProvider";
 export default function RootLayout({
   children,
 }: {
@@ -24,10 +26,14 @@ export default function RootLayout({
     <>
       <html lang="en">
         <body suppressHydrationWarning={true}>
-          <ThemeProvider>
-            <ToastContainer theme="dark" />
-            <main>{children}</main>
-          </ThemeProvider>
+          <WebSocketProvider>
+            <AuthProvider>
+              <ThemeProvider>
+                <ToastContainer theme="dark" />
+                <main>{children}</main>
+              </ThemeProvider>
+            </AuthProvider>
+          </WebSocketProvider>
         </body>
       </html>
     </>

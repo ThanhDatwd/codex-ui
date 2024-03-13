@@ -17,6 +17,7 @@ const LearnPage = () => {
                     bannerUrl={item.url}
                     title={i18next.t(`learn.${item.title}`)}
                     content={i18next.t(`learn.${item.content}`)}
+                    articleUrl={`/m/learn/docs/en/${item.articleQuery}/`}
                 />
             ))}
         </div>
