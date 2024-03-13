@@ -103,7 +103,7 @@ const Trading: FC<Props> = ({ token, currency, onClickShortBtn, onClickLongBtn }
                 20%
               </h6>
               <div className="text-[14px] w-full text-center bg-[#3D5AFE] rounded-b-lg text-[#fff]">
-                1 {i18next.t("tradePage.trade.minute")}
+                2 {i18next.t("tradePage.trade.minute")}
               </div>
             </div>
 
@@ -118,7 +118,7 @@ const Trading: FC<Props> = ({ token, currency, onClickShortBtn, onClickLongBtn }
                 30%
               </h6>
               <div className="text-[14px] w-full text-center bg-[#3D5AFE] rounded-b-lg text-[#fff]">
-                1 {i18next.t("tradePage.trade.minute")}
+                3 {i18next.t("tradePage.trade.minute")}
               </div>
             </div>
 
@@ -133,7 +133,7 @@ const Trading: FC<Props> = ({ token, currency, onClickShortBtn, onClickLongBtn }
                 50%
               </h6>
               <div className="text-[14px] w-full text-center bg-[#3D5AFE] rounded-b-lg text-[#fff]">
-                1 {i18next.t("tradePage.trade.minute")}
+                4 {i18next.t("tradePage.trade.minute")}
               </div>
             </div>
 
@@ -148,7 +148,7 @@ const Trading: FC<Props> = ({ token, currency, onClickShortBtn, onClickLongBtn }
                 80%
               </h6>
               <div className="text-[14px] w-full text-center bg-[#3D5AFE] rounded-b-lg text-[#fff]">
-                1 {i18next.t("tradePage.trade.minute")}
+                5 {i18next.t("tradePage.trade.minute")}
               </div>
             </div>
 
@@ -163,7 +163,7 @@ const Trading: FC<Props> = ({ token, currency, onClickShortBtn, onClickLongBtn }
                 100%
               </h6>
               <div className="text-[14px] w-full text-center bg-[#3D5AFE] rounded-b-lg text-[#fff]">
-                1 {i18next.t("tradePage.trade.minute")}
+                 6 {i18next.t("tradePage.trade.minute")}
               </div>
             </div>
           </div>
