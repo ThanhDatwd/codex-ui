@@ -53,14 +53,14 @@ export class AuthService {
   
   public async login(values: {
     email?:string;
-    phoneNumer?:string;
+    phoneNumber?:string;
     username?: string;
     password: string;
     mode:LOGIN_MODE
   }): Promise<any> {
     const { data } = await restConnector.post("/auth/login", {
       email:values.email,
-      phoneNumber:values.phoneNumer,
+      phoneNumber:values.phoneNumber,
       username: values.username,
       password: values.password,
       mode: values.mode,
